@@ -1,0 +1,21 @@
+.product {
+    padding: 20px;
+    text-align: center;
+    background: #081a9a;
+    margin: 5px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 5px;
+}
+
+.show{
+    display:flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.hide{
+    display: none;
+}

@@ -1,0 +1,31 @@
+.nav {
+    display: flex;
+    font-weight: 700;
+    font-size: 24px;
+    font-family: cursive;
+    align-items: center;
+}
+.logo {
+    flex-grow: 1;
+}
+ul#mainmenu {
+    flex-grow: 2;
+}
+ul#mainmenu li {
+    display: inline-block;
+    padding: 10px;
+}
+
+
+ul#mainmenu li:hover {
+    cursor: pointer;
+}
+
+ul#mainmenu li a {
+    text-decoration:none;
+}
+
+ul#mainmenu li a:hover {
+    color:pink;
+}
+

@@ -1,0 +1,6 @@
+.cart-item {
+    display: flex;
+    justify-content: space-around;
+    background: pink;
+    align-items: center;
+}
