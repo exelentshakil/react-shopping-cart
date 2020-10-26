@@ -7,6 +7,7 @@ import Contact from './components/Contact'
 import Shop from './components/Shop'
 import Home from './components/Home'
 import Cart from './components/Cart'
+import ProductDetails from './components/Shop/Products/Product/ProductDetails'
 
 // Router
 
@@ -33,6 +34,8 @@ const App = () => {
             <Route path="/about" exact component={About} />
             <Route path="/contact" exact component={Contact} />
             <Route path="/cart" exact component={Cart} />
+
+            <Route path="/products/:id" component={ProductDetails} />
 
           </Switch>
 

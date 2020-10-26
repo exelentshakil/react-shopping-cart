@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react'
 
 import {ProductContext} from '../../../../contexts/ProductContext'
 import { ACTIONS } from '../../../../reducers/productReducer';
+import {Link} from 'react-router-dom'
 
 // css
 import './product.css'
 
-const Product = ({ id, name, subText, price, qty }) => {
+const Product = ({ id, name, subText, price, qty, image }) => {
 
     const [products, dispatch] = useContext(ProductContext);
     const [cartQty, setCartQty] = useState(0);
@@ -26,10 +27,14 @@ const Product = ({ id, name, subText, price, qty }) => {
     }
 
     return (
-        <div className="product">
-            <h4>{ name }</h4>
-            <p>{subText}</p>
-            <span>${price}</span>
+        <Link to={`/products/${id}`}>
+            <div className="product">
+            <div className="image"><img src={image} alt=""/></div>
+                <div className="detail">
+                    <h4>{ name }</h4>
+                    <p>{subText}</p>
+                    <span>${price}</span>
+            </div>
 
             {/* className={qty > 0 ? "qty show" : "hide"} */}
 
@@ -40,7 +45,8 @@ const Product = ({ id, name, subText, price, qty }) => {
             </div>
 
             <button className={qty === 0 ? "show" : "hide"} onClick={addToBag}>Add to bag</button>
-        </div>
+            </div>
+            </Link>
     )
 }
 

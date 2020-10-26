@@ -42,7 +42,7 @@ const Products = () => {
             {
                 products.data.map(product => (
 
-                    <Product id={product.id} name={product.name} subText={product.subText} price={product.price} qty={product.qty} key={product.id}/>
+                    <Product id={product.id} name={product.name} subText={product.subText} price={product.price} qty={product.qty} key={product.id} image={product.image}/>
                 ))
 
             }
