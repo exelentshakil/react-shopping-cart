@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React,{useContext} from 'react';
 // Components
 
 import Nav from './components/Nav'
@@ -16,7 +15,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 // Contexts
 
 import {ProductProvider} from './contexts/ProductContext'
-
 // css
 import './App.css'
 

@@ -1,58 +1,43 @@
-import React, {createContext, useReducer} from 'react'
-// reducers
-import { productReducer } from '../reducers/productReducer'
+import React, { createContext, useReducer, useEffect } from 'react'
+import axios from '../axios'
+
+import { ACTIONS, productReducer } from '../reducers/productReducer'
 
 export const ProductContext = createContext();
 
 
 export const ProductProvider = (props) => {
 
-    const initializeProducts = [
-        {
-            id: 10,
-            name: 'Onion (Deshi)',
-            subText: '500g',
-            price: 40,
-            qty: 0,
+    const initialize = {
+        data: [],
+        links: {
+            first: "",
+            last: "",
+            prev: "",
+            next: ""
         },
-        {
-            id: 11,
-            name: 'Onion (Indian)',
-            subText: '500g',
-            price: 30,
-            qty: 0,
-        },
-        {
-            id: 12,
-            name: 'Alu (Deshi)',
-            subText: '1 kg',
-            price: 80,
-            qty: 0,
-        },
-        {
-            id: 13,
-            name: 'Alu (Indian)',
-            subText: '1 kg',
-            price: 60,
-            qty: 0,
-        },
-        {
-            id: 14,
-            name: 'Meat (Beef)',
-            subText: '1 kg',
-            price: 600,
-            qty: 0,
-        },
-        {
-            id: 15,
-            name: 'Chicken (Dressed)',
-            subText: '1 kg',
-            price: 200,
-            qty: 0,
-        },
-    ];
+        meta: {
+            current_page: 0,
+            from: 0,
+            last_page: 0,
+            per_page: 0,
+            to: 0,
+            total: 0
+        }
+    };
 
-    const [products, dispatch] = useReducer(productReducer, initializeProducts);
+    const [products, dispatch] = useReducer(productReducer, initialize);
+
+    const fetchProducts = async () => {
+            const req = await axios.get('/products');
+            dispatch({ type: ACTIONS.FETCH_PRODUCTS, payload:{ products: req.data }})
+        }
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    console.log('Logging data from context %O', products);
 
     return (
         <ProductContext.Provider value={[products, dispatch]}>
